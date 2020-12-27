@@ -1,21 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react"
+import { Text, Image } from "react-native"
+import AppLoading from "expo-app-loading"
+import { Asset } from "expo-asset"
+
+
+const casheImages = images => images.map(image => {
+  if (typeof image === "string") {
+    return Image.prefetch(image)
+  } else {
+    return Asset.fromModule(image).downloadAsync()
+  }
+})
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  const [isLoading, setIsLoading] = useState(false)
+  const loadAssets = async () => {
+    const images = casheImages(['https://unsplash.com/photos/1gLdTsX3_70'])
+    console.log(images)
+  }
+  const onFinish = () => setIsLoading(true)
+  return isLoading ? <Text>LOADED!!</Text> : <AppLoading startAsync={loadAssets} onFinish={onFinish} onError={console.error} />
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
