@@ -5,6 +5,8 @@ import { Asset } from "expo-asset"
 import { Ionicons } from '@expo/vector-icons';
 import * as Font from "expo-font"
 import { loadAsync } from "expo-font";
+import { NavigationContainer } from "@react-navigation/native"
+import Stack from "./navigation/Stack";
 
 const casheImages = images => images.map(image => {
   if (typeof image === "string") {
@@ -24,5 +26,5 @@ export default function App() {
     return Promise.all([...images, ...fonts])
   }
   const onFinish = () => setIsLoading(true)
-  return isLoading ? <Text>LOADED!!</Text> : <AppLoading startAsync={loadAssets} onFinish={onFinish} onError={console.error} />
+  return isLoading ? <NavigationContainer><Stack /></NavigationContainer> : <AppLoading startAsync={loadAssets} onFinish={onFinish} onError={console.error} />
 }
