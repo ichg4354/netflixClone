@@ -7,6 +7,7 @@ import * as Font from "expo-font"
 import { loadAsync } from "expo-font";
 import { NavigationContainer } from "@react-navigation/native"
 import Stack from "./navigation/Stack";
+import Tab from "./navigation/Tab";
 
 const casheImages = images => images.map(image => {
   if (typeof image === "string") {
