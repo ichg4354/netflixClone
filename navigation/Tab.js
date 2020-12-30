@@ -1,21 +1,18 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Detail from "../screens/Detail";
 import Movies from "../screens/Movies";
 import Tv from "../screens/Tv";
 import Search from "../screens/Search";
 import Favs from "../screens/Favs";
-
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator()
 
 export default (object) => {
-    object.navigation.setOptions({ title: "Movies" })
-    if (object.route.state) {
-        const routeNames = object.route.state.routeNames
-        const routeIndex = object.route.state.index
-        object.navigation.setOptions({ title: routeNames[routeIndex] })
-    }
+    const route = getFocusedRouteNameFromRoute(object.route) ?? "Movies"
+    useEffect(() => object.navigation.setOptions({ title: route }), [route])
+
     return (<Tab.Navigator>
         <Tab.Screen name="Movies" component={Movies} />
         <Tab.Screen name="TV" component={Tv} />
