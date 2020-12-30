@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useLayoutEffect } from "react"
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Detail from "../screens/Detail";
 import Movies from "../screens/Movies";
@@ -11,7 +11,7 @@ const Tab = createBottomTabNavigator()
 
 export default (object) => {
     const route = getFocusedRouteNameFromRoute(object.route) ?? "Movies"
-    useEffect(() => object.navigation.setOptions({ title: route }), [route])
+    useLayoutEffect(() => object.navigation.setOptions({ title: route }), [route])
 
     return (<Tab.Navigator>
         <Tab.Screen name="Movies" component={Movies} />
