@@ -7,7 +7,7 @@ import * as Font from "expo-font"
 import { loadAsync } from "expo-font";
 import { NavigationContainer } from "@react-navigation/native"
 import Stack from "./navigation/Stack";
-import Tab from "./navigation/Tab";
+import { StatusBar } from 'expo-status-bar';
 
 const casheImages = images => images.map(image => {
   if (typeof image === "string") {
@@ -27,5 +27,5 @@ export default function App() {
     return Promise.all([...images, ...fonts])
   }
   const onFinish = () => setIsLoading(true)
-  return isLoading ? <NavigationContainer><Stack /></NavigationContainer> : <AppLoading startAsync={loadAssets} onFinish={onFinish} onError={console.error} />
+  return isLoading ? <NavigationContainer><Stack /><StatusBar style="light"></StatusBar></NavigationContainer> : <AppLoading startAsync={loadAssets} onFinish={onFinish} onError={console.error} />
 }
