@@ -24,11 +24,3 @@ export default () => (
 
 
 
-// Movies
-// Movies
-// TV
-// TV
-// Search
-// Search
-// Favs
-// Favs

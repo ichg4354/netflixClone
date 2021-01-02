@@ -20,9 +20,7 @@ export default (object) => {
     return (<Tab.Navigator
         screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
-                let iconName
-                { Platform.OS === 'ios' ? iconName = 'ios-' : iconName = "md-" }
-                console.log(iconName)
+                let iconName = Platform.OS === 'ios' ? iconName = 'ios-' : iconName = "md-"
                 if (route.name === 'Movies') {
                     iconName += "film"
                 } else if (route.name === 'TV') {
@@ -32,13 +30,14 @@ export default (object) => {
                 } else {
                     iconName += 'heart'
                 }
-                return <Ionicons name={iconName} size={26} color={focused ? "white" : "gray"}></Ionicons>
+                return <Ionicons name={iconName} size={25} color={focused ? "white" : "gray"}></Ionicons>
             }
         })}
         tabBarOptions={{
+            showLabel: false,
             style: {
                 backgroundColor: "black",
-                borderTopColor: "black"
+                borderTopColor: "black",
             }
         }}>
         <Tab.Screen name="Movies" component={Movies} />
