@@ -20,3 +20,15 @@ export default () => (
         }} />
     </Stack.Navigator>
 )
+
+
+
+
+// Movies
+// Movies
+// TV
+// TV
+// Search
+// Search
+// Favs
+// Favs
