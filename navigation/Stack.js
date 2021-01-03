@@ -13,7 +13,8 @@ export default () => (
             shadowColor: "black"
         },
         headerTintColor: 'white',
-    }}>
+    }}
+    >
         <Stack.Screen name="Tab" component={Tab} />
         <Stack.Screen name="Detail" component={Detail} options={{
             headerBackTitleVisible: false

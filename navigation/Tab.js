@@ -29,6 +29,7 @@ export default (object) => {
                     iconName += 'search'
                 } else {
                     iconName += 'heart'
+
                 }
                 return <Ionicons name={iconName} size={25} color={focused ? "white" : "gray"}></Ionicons>
             }
@@ -46,3 +47,4 @@ export default (object) => {
         <Tab.Screen name="Favs" component={Favs} />
     </Tab.Navigator >)
 }
+
