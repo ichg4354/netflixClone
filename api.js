@@ -11,8 +11,9 @@ const getAnything = async (path, params = {}) => {
   try {
     const {
       data: { results },
+      data,
     } = await makeRequest(path, params);
-    return [results, null];
+    return [results || data, null];
   } catch (e) {
     return [null, e];
   }

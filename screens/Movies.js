@@ -4,9 +4,19 @@ import { movieApi } from "../api";
 import Detail from "./Detail";
 
 export default () => {
+  const [movies, setMovies] = useState({});
   const getData = async () => {
-    const [nowPlaying, error] = await movieApi.nowPlaying();
-    console.log(nowPlaying);
+    const [nowPlaying, nowPlayingError] = await movieApi.nowPlaying();
+    const [popular, popularError] = await movieApi.popular();
+    const [upcomming, upcommingError] = await movieApi.upcomming();
+    setMovies({
+      nowPlaying,
+      nowPlayingError,
+      popular,
+      popularError,
+      upcomming,
+      upcommingError,
+    });
   };
 
   useEffect(() => {
@@ -14,7 +24,7 @@ export default () => {
   }, []);
   return (
     <View style={{ backgroundColor: "black", flex: 1 }}>
-      <Text>MOVIES</Text>
+      <Text style={{ color: "white" }}>{movies.nowPlaying?.length}</Text>
     </View>
   );
 };
