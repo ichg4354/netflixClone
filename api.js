@@ -22,7 +22,7 @@ const getAnything = async (path, params = {}) => {
 export const movieApi = {
   nowPlaying: () => getAnything("/movie/now_playing", null),
   popular: () => getAnything("/movie/popular"),
-  upcomming: () => getAnything("/movie/upcoming", { region: "ko" }),
+  upcomming: () => getAnything("/movie/upcoming", { region: "kr" }),
   search: (query) => getAnything("/search/movie", { query: query }),
   movie: (id) => getAnything(`/movie/${id}`),
   discover: () => getAnything("/discover/movie"),
