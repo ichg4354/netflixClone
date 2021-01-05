@@ -20,7 +20,6 @@ export default () => {
       popularError,
     });
   };
-  console.log(tv.length);
   useEffect(() => {
     getData();
   }, []);
