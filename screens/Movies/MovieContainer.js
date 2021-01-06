@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, Button } from "react-native";
-import { movieApi } from "../api";
-import Detail from "./Detail";
+import { movieApi } from "../../api";
+import MoviePresenter from "./MoviePresenter";
 
 export default () => {
   const [movies, setMovies] = useState({});
@@ -22,9 +22,5 @@ export default () => {
   useEffect(() => {
     getData();
   }, []);
-  return (
-    <View style={{ backgroundColor: "black", flex: 1 }}>
-      <Text style={{ color: "white" }}>{movies.nowPlaying?.length}</Text>
-    </View>
-  );
+  return <MoviePresenter></MoviePresenter>;
 };
