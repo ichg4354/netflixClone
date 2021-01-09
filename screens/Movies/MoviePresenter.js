@@ -3,6 +3,7 @@ import styled from "styled-components/native";
 import Swiper from "react-native-web-swiper";
 import { ActivityIndicator, Dimensions } from "react-native";
 import { Slide } from "../../Components/Movies/Slide";
+import { ScrollView } from "react-native-gesture-handler";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("screen");
 
@@ -19,7 +20,16 @@ const SliderContainer = styled.View`
 `;
 
 export default ({ loading, nowPlaying }) => (
-  <Container>
+  <ScrollView
+    style={{
+      backgroundColor: "black",
+    }}
+    contentContainerStyle={{
+      flex: 1,
+      alignItems: "center",
+      justifyContent: loading ? "center" : "flex-start",
+    }}
+  >
     {loading ? (
       <ActivityIndicator color="white" />
     ) : (
@@ -39,5 +49,5 @@ export default ({ loading, nowPlaying }) => (
         </Swiper>
       </SliderContainer>
     )}
-  </Container>
+  </ScrollView>
 );

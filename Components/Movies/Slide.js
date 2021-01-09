@@ -51,9 +51,10 @@ const Button = styled.TouchableOpacity`
   background-color: #c0392b;
   justify-content: center;
   align-items: center;
-  opacity: 0.8;
+  opacity: 0.9;
   margin-top: 15px;
   border-radius: 4px;
+  width: 60%;
 `;
 
 const ButtonText = styled.Text`
@@ -73,8 +74,8 @@ export const Slide = ({
     <Content>
       <Poster url={getImage(poster)} />
       <Data>
-        <Title>{title.slice(0, 30)}</Title>
-        <Votes>{`🌟 ${votes} / 10`}</Votes>
+        <Title>{title.length > 25 ? `${title.slice(0, 25)}...` : title}</Title>
+        <Votes>{`⭐️ ${votes} / 10`}</Votes>
         <Overview>{overview.slice(0, 80) + "..."}</Overview>
         <Button>
           <ButtonText>View details</ButtonText>
