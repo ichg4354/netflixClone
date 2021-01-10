@@ -4,6 +4,7 @@ import styled from "styled-components/native";
 import { getImage } from "../../api";
 import { Poster } from "../Poster";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import Votes from "../Votes";
 
 const BG = styled.Image`
   width: 100%;
@@ -33,12 +34,11 @@ const Title = styled.Text`
   margin-bottom: 10px;
 `;
 
-const Votes = styled.Text`
-  color: white;
-  font-size: 12px;
+const VotesContainer = styled.View`
   opacity: 0.8;
   margin-bottom: 5px;
 `;
+
 const Overview = styled.Text`
   color: white;
   opacity: 0.6;
@@ -75,7 +75,9 @@ export const Slide = ({
       <Poster url={getImage(poster)} />
       <Data>
         <Title>{title.length > 25 ? `${title.slice(0, 25)}...` : title}</Title>
-        <Votes>{`⭐️ ${votes} / 10`}</Votes>
+        <VotesContainer>
+          <Votes votes={votes} />
+        </VotesContainer>
         <Overview>{overview.slice(0, 80) + "..."}</Overview>
         <Button>
           <ButtonText>View details</ButtonText>
