@@ -3,15 +3,14 @@ import styled from "styled-components/native";
 import Swiper from "react-native-web-swiper";
 import { ActivityIndicator, Dimensions } from "react-native";
 import { Slide } from "../../Components/Movies/Slide";
-import { ScrollView } from "react-native-gesture-handler";
+import { ScrollView } from "react-native";
+import Vertical from "../../Components/Vertical";
 
-const { width: WIDTH, height: HEIGHT } = Dimensions.get("screen");
+const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 
 const Container = styled.View`
-  flex: 1;
-  background-color: black;
-  align-items: center;
-  justify-content: center;
+  width: ${WIDTH}px;
+  justify-content: flex-start;
 `;
 
 const SliderContainer = styled.View`
@@ -19,7 +18,13 @@ const SliderContainer = styled.View`
   height: ${HEIGHT / 4}px;
 `;
 
-export default ({ loading, nowPlaying }) => (
+const Title = styled.Text`
+  font-weight: bold;
+  color: white;
+  font-size: 16px;
+`;
+
+export default ({ loading, nowPlaying, popular }) => (
   <ScrollView
     style={{
       backgroundColor: "black",
@@ -33,21 +38,36 @@ export default ({ loading, nowPlaying }) => (
     {loading ? (
       <ActivityIndicator color="white" />
     ) : (
-      <SliderContainer>
-        <Swiper loop timeout={3} controlsEnabled={false} autoPlay={true}>
-          {nowPlaying.map((movie) => (
-            <Slide
-              key={movie.id}
-              id={movie.id}
-              title={movie.title}
-              overview={movie.overview}
-              votes={movie.vote_average}
-              backgroundImage={movie.backdrop_path}
-              poster={movie.poster_path}
-            />
-          ))}
-        </Swiper>
-      </SliderContainer>
+      <>
+        <SliderContainer>
+          <Swiper loop timeout={3} controlsEnabled={false} autoPlay={true}>
+            {nowPlaying.map((movie) => (
+              <Slide
+                key={movie.id}
+                id={movie.id}
+                title={movie.title}
+                overview={movie.overview}
+                votes={movie.vote_average}
+                backgroundImage={movie.backdrop_path}
+                poster={movie.poster_path}
+              />
+            ))}
+          </Swiper>
+        </SliderContainer>
+        <Container>
+          <Title>Popular Movies</Title>
+          <ScrollView horizontal={true}>
+            {popular.map((movie) => (
+              <Vertical
+                key={movie.id}
+                title={movie.title}
+                votes={movie.vote_average}
+                poster={movie.poster_path}
+              />
+            ))}
+          </ScrollView>
+        </Container>
+      </>
     )}
   </ScrollView>
 );
