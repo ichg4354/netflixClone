@@ -5,7 +5,7 @@ import { Poster } from "./Poster";
 import { Text } from "react-native";
 import { getImage } from "../api";
 import Votes from "./Votes";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { TouchableOpacity } from "react-native";
 
 const Container = styled.View`
   justify-content: center;
@@ -18,7 +18,7 @@ const Title = styled.Text`
   margin-top: 4px;
 `;
 
-const Vertical = ({ title, votes, poster }) => (
+const Horizontal = ({ title, votes, poster }) => (
   <TouchableOpacity>
     <Container>
       <Poster url={getImage(poster)} />
@@ -30,4 +30,4 @@ const Vertical = ({ title, votes, poster }) => (
   </TouchableOpacity>
 );
 
-export default Vertical;
+export default Horizontal;
