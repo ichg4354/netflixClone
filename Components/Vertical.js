@@ -4,14 +4,30 @@ import propTypes from "prop-types";
 import { Poster } from "./Poster";
 import { Text } from "react-native";
 import { getImage } from "../api";
+import Votes from "./Votes";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-const Container = styled.View``;
+const Container = styled.View`
+  justify-content: center;
+  align-items: center;
+  margin-right: 16px;
+`;
+
+const Title = styled.Text`
+  font-size: 13px;
+  margin-top: 4px;
+`;
 
 const Vertical = ({ title, votes, poster }) => (
-  <Container>
-    <Poster url={getImage(poster)} />
-    <Text style={{ color: "white" }}>{title}</Text>
-  </Container>
+  <TouchableOpacity>
+    <Container>
+      <Poster url={getImage(poster)} />
+      <Title style={{ color: "white" }}>
+        {title.length >= 10 ? title.slice(0, 10) + "..." : title}
+      </Title>
+      <Votes votes={votes} />
+    </Container>
+  </TouchableOpacity>
 );
 
 export default Vertical;

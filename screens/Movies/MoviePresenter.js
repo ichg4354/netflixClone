@@ -11,6 +11,7 @@ const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.View`
   width: ${WIDTH}px;
   justify-content: flex-start;
+  padding: 10px 20px;
 `;
 
 const SliderContainer = styled.View`
@@ -21,7 +22,9 @@ const SliderContainer = styled.View`
 const Title = styled.Text`
   font-weight: bold;
   color: white;
-  font-size: 16px;
+  font-size: 20px;
+  margin-bottom: 15px;
+  margin-top: 5px;
 `;
 
 export default ({ loading, nowPlaying, popular }) => (
@@ -56,7 +59,7 @@ export default ({ loading, nowPlaying, popular }) => (
         </SliderContainer>
         <Container>
           <Title>Popular Movies</Title>
-          <ScrollView horizontal={true}>
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             {popular.map((movie) => (
               <Vertical
                 key={movie.id}
