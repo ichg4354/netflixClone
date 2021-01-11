@@ -5,7 +5,7 @@ import { Image } from "react-native";
 import { getImage } from "../api";
 
 const PosterImage = styled.Image`
-  width: 100px;
+  width: 105px;
   height: 160px;
   border-radius: 4px;
 `;

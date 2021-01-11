@@ -4,23 +4,31 @@ import styled from "styled-components/native";
 import { TouchableOpacity } from "react-native";
 import { getImage } from "../api";
 import { Poster } from "./Poster";
+import { sliceText } from "../utils";
 
 const Container = styled.View`
   flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
 `;
 
 const Data = styled.View`
   align-items: flex-start;
+  width: 65%;
 `;
 
 const Title = styled.Text`
   color: white;
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 5px;
 `;
 const OverView = styled.Text`
   color: white;
 `;
 const ReleseDate = styled.Text`
   color: white;
+  margin-bottom: 10px;
 `;
 
 const Vertical = ({ title, poster, overView, releaseDate, id }) => (
@@ -29,8 +37,8 @@ const Vertical = ({ title, poster, overView, releaseDate, id }) => (
       <Poster url={poster} />
       <Data>
         <Title>{title}</Title>
-        <OverView>{overView}</OverView>
         {releaseDate ? <ReleseDate>{releaseDate}</ReleseDate> : null}
+        <OverView>{sliceText(overView, 150)}</OverView>
       </Data>
     </Container>
   </TouchableOpacity>

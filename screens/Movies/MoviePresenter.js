@@ -25,7 +25,7 @@ const Title = styled.Text`
   color: white;
   font-size: 20px;
   margin-bottom: 15px;
-  margin-top: 5px;
+  margin-top: 10px;
 `;
 
 export default ({ loading, nowPlaying, popular, upcomming }) => (

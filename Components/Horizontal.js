@@ -6,6 +6,7 @@ import { Text } from "react-native";
 import { getImage } from "../api";
 import Votes from "./Votes";
 import { TouchableOpacity } from "react-native";
+import { sliceText } from "../utils";
 
 const Container = styled.View`
   justify-content: center;
@@ -22,9 +23,7 @@ const Horizontal = ({ title, votes, poster, id }) => (
   <TouchableOpacity>
     <Container>
       <Poster url={poster} />
-      <Title style={{ color: "white" }}>
-        {title.length >= 10 ? title.slice(0, 10) + "..." : title}
-      </Title>
+      <Title style={{ color: "white" }}>{sliceText(title, 10)}</Title>
       <Votes votes={votes} />
     </Container>
   </TouchableOpacity>
