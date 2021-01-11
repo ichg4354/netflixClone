@@ -21,7 +21,7 @@ const Title = styled.Text`
 const Horizontal = ({ title, votes, poster, id }) => (
   <TouchableOpacity>
     <Container>
-      <Poster url={getImage(poster)} />
+      <Poster url={poster} />
       <Title style={{ color: "white" }}>
         {title.length >= 10 ? title.slice(0, 10) + "..." : title}
       </Title>

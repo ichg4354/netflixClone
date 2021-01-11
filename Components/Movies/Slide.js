@@ -72,7 +72,7 @@ export const Slide = ({
   <>
     <BG source={{ uri: getImage(backgroundImage) }}></BG>
     <Content>
-      <Poster url={getImage(poster)} />
+      <Poster url={poster} />
       <Data>
         <Title>{title.length > 25 ? `${title.slice(0, 25)}...` : title}</Title>
         <VotesContainer>

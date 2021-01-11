@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components/native";
 import propTypes from "prop-types";
 import { Image } from "react-native";
+import { getImage } from "../api";
 
 const PosterImage = styled.Image`
   width: 100px;
@@ -10,7 +11,7 @@ const PosterImage = styled.Image`
 `;
 
 export const Poster = ({ url }) => (
-  <PosterImage source={{ uri: url }}></PosterImage>
+  <PosterImage source={{ uri: getImage(url) }}></PosterImage>
 );
 
 Poster.propTypes = {

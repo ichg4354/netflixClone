@@ -5,6 +5,7 @@ import { ActivityIndicator, Dimensions } from "react-native";
 import { Slide } from "../../Components/Movies/Slide";
 import { ScrollView } from "react-native";
 import Horizontal from "../../Components/Horizontal";
+import Vertical from "../../Components/Vertical";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 
@@ -27,13 +28,12 @@ const Title = styled.Text`
   margin-top: 5px;
 `;
 
-export default ({ loading, nowPlaying, popular }) => (
+export default ({ loading, nowPlaying, popular, upcomming }) => (
   <ScrollView
     style={{
       backgroundColor: "black",
     }}
     contentContainerStyle={{
-      flex: 1,
       alignItems: "center",
       justifyContent: loading ? "center" : "flex-start",
     }}
@@ -70,6 +70,19 @@ export default ({ loading, nowPlaying, popular }) => (
               />
             ))}
           </ScrollView>
+        </Container>
+        <Container>
+          <Title>Upcomming</Title>
+          {upcomming.map((movie) => (
+            <Vertical
+              key={movie.id}
+              poster={movie.poster_path}
+              id={movie.id}
+              title={movie.title}
+              overView={movie.overview}
+              releaseDate={movie.release_date}
+            ></Vertical>
+          ))}
         </Container>
       </>
     )}
