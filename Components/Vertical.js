@@ -5,9 +5,13 @@ import { TouchableOpacity } from "react-native";
 import { getImage } from "../api";
 import { Poster } from "./Poster";
 
-const Container = styled.View``;
+const Container = styled.View`
+  flex-direction: row;
+`;
 
-const Data = styled.View``;
+const Data = styled.View`
+  align-items: flex-start;
+`;
 
 const Title = styled.Text`
   color: white;
