@@ -62,6 +62,7 @@ export default ({ loading, nowPlaying, popular }) => (
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {popular.map((movie) => (
               <Horizontal
+                id={movie.id}
                 key={movie.id}
                 title={movie.title}
                 votes={movie.vote_average}

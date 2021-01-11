@@ -18,7 +18,7 @@ const Title = styled.Text`
   margin-top: 4px;
 `;
 
-const Horizontal = ({ title, votes, poster }) => (
+const Horizontal = ({ title, votes, poster, id }) => (
   <TouchableOpacity>
     <Container>
       <Poster url={getImage(poster)} />
