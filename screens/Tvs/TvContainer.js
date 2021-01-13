@@ -9,13 +9,16 @@ export default () => {
     const [today, todayError] = await tvApi.today();
     const [thisWeek, thisWeekError] = await tvApi.thisWeek();
     const [topRated, topRatedError] = await tvApi.topRated();
+    const [popular, popularError] = await tvApi.popular();
     setTv({
       today,
       thisWeek,
       topRated,
+      popular,
       todayError,
       thisWeekError,
       topRatedError,
+      popularError,
       loading: false,
     });
   };
