@@ -7,6 +7,8 @@ import { ScrollView } from "react-native";
 import Horizontal from "../../Components/Horizontal";
 import Vertical from "../../Components/Vertical";
 import ScrollContainer from "../../Components/ScrollContainer";
+import HorizontalContainer from "../../Components/HorizontalContainer";
+import VerticalContainer from "../../Components/VerticalContainer";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 
@@ -46,22 +48,18 @@ export default ({ loading, nowPlaying, popular, upcomming }) => (
         ))}
       </Swiper>
     </SliderContainer>
-    <Container>
-      <Title>Popular Movies</Title>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {popular?.map((movie) => (
-          <Horizontal
-            id={movie.id}
-            key={movie.id}
-            title={movie.title}
-            votes={movie.vote_average}
-            poster={movie.poster_path}
-          />
-        ))}
-      </ScrollView>
-    </Container>
-    <Container>
-      <Title>Upcomming</Title>
+    <HorizontalContainer title={"Popular Movies"}>
+      {popular?.map((movie) => (
+        <Horizontal
+          id={movie.id}
+          key={movie.id}
+          title={movie.title}
+          votes={movie.vote_average}
+          poster={movie.poster_path}
+        />
+      ))}
+    </HorizontalContainer>
+    <VerticalContainer title="Upcomming">
       {upcomming?.map((movie) => (
         <Vertical
           key={movie.id}
@@ -72,6 +70,6 @@ export default ({ loading, nowPlaying, popular, upcomming }) => (
           releaseDate={movie.release_date}
         ></Vertical>
       ))}
-    </Container>
+    </VerticalContainer>
   </ScrollContainer>
 );
