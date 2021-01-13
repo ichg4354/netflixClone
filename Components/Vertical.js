@@ -8,13 +8,14 @@ import { sliceText } from "../utils";
 
 const Container = styled.View`
   flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 20px;
+  justify-content: flex-start;
+  margin-bottom: 25px;
 `;
 
 const Data = styled.View`
   align-items: flex-start;
   width: 65%;
+  margin-left: 2%;
 `;
 
 const Title = styled.Text`

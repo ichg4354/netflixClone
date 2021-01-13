@@ -32,6 +32,7 @@ export default ({ loading, popular, topRated, today }) => (
         ></Horizontal>
       ))}
     </HorizontalContainer>
+
     <VerticalContainer title="On Air Today">
       {today?.map((show) => (
         <Vertical
