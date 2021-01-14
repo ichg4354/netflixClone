@@ -1,11 +1,11 @@
 import React from "react";
 import propTypes from "prop-types";
 import styled from "styled-components/native";
-import { getImage } from "../../api";
-import { Poster } from "../Poster";
+import { getImage } from "../api";
+import { Poster } from "./Poster";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import Votes from "../Votes";
-import { sliceText } from "../../utils";
+import Votes from "./Votes";
+import { sliceText } from "../utils";
 
 const BG = styled.Image`
   width: 100%;
