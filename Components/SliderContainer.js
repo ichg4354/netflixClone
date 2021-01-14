@@ -19,4 +19,6 @@ export default ({ children }) => (
   </SliderContainer>
 );
 
-SliderContainer.propTypes = {};
+SliderContainer.propTypes = {
+  children: propTypes.node.isRequired,
+};
