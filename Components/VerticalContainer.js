@@ -24,6 +24,6 @@ export default ({ title, children }) => (
 );
 
 VerticalContainer.propTypes = {
-  title: propTypes.string.isRequired,
+  title: propTypes.string,
   children: propTypes.node.isRequired,
 };

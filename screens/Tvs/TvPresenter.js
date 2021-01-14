@@ -14,7 +14,6 @@ import { Slide } from "../../Components/Slide";
 
 export default ({ loading, popular, topRated, today, thisWeek }) => (
   <ScrollContainer loading={loading}>
-    {console.log(thisWeek)}
     <HorizontalContainer title={"Popular Shows"}>
       {popular?.map((show) => (
         <Horizontal

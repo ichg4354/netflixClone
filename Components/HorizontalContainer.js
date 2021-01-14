@@ -28,6 +28,6 @@ export default ({ title, children }) => (
 );
 
 HorizontalContainer.propTypes = {
-  title: propTypes.string.isRequired,
+  title: propTypes.string,
   children: propTypes.node.isRequired,
 };
