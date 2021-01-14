@@ -12,23 +12,9 @@ import VerticalContainer from "../../Components/VerticalContainer";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 
-const Container = styled.View`
-  width: 100%;
-  justify-content: flex-start;
-  padding: 10px 20px;
-`;
-
 const SliderContainer = styled.View`
   width: 100%;
   height: ${HEIGHT / 4}px;
-`;
-
-const Title = styled.Text`
-  font-weight: bold;
-  color: white;
-  font-size: 20px;
-  margin-bottom: 15px;
-  margin-top: 10px;
 `;
 
 export default ({ loading, nowPlaying, popular, upcomming }) => (

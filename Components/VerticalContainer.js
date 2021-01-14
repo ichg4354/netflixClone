@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
+import propTypes from "prop-types";
 
 const VerticalContainer = styled.View`
   width: 100%;
@@ -21,3 +22,8 @@ export default ({ title, children }) => (
     {children}
   </VerticalContainer>
 );
+
+VerticalContainer.propTypes = {
+  title: propTypes.string.isRequired,
+  children: propTypes.node.isRequired,
+};
