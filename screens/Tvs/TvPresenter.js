@@ -50,7 +50,6 @@ export default ({ loading, popular, topRated, today, thisWeek }) => (
         ></Horizontal>
       ))}
     </HorizontalContainer>
-
     <VerticalContainer title="On Air Today">
       {today?.map((show) => (
         <Vertical
