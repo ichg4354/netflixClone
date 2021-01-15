@@ -1,14 +1,13 @@
 import React, { useEffect, useState, useLayoutEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Detail from "../screens/Detail";
-import Tv from "../screens/Tv";
-import Search from "../screens/Search";
 import Favs from "../screens/Favs";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import { Platform } from "react-native";
 import Movies from "../screens/Movies";
 import Tvs from "../screens/Tvs";
+import Search from "../screens/Search";
 import MovieContainer from "../screens/Movies/MovieContainer";
 
 const Tab = createBottomTabNavigator();
