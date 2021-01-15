@@ -1,7 +1,6 @@
 import React from "react";
-import { ScrollView } from "react-native-gesture-handler";
+import { ScrollView, TextInput } from "react-native-gesture-handler";
 import styled from "styled-components/native";
-import Search from "../../Components/Search";
 
 const Container = styled.View`
   background-color: black;
@@ -15,8 +14,16 @@ const Text = styled.Text`
 export default () => (
   <Container>
     <ScrollView>
-      <Search></Search>
-      <Text>HIDFD</Text>
+      <TextInput
+        style={{
+          color: "white",
+          height: 40,
+          borderColor: "white",
+          borderWidth: 1,
+        }}
+        onChangeText={(text) => console.log(text)}
+        onSubmitEditing={(value) => console.log(value.nativeEvent.text)}
+      />
     </ScrollView>
   </Container>
 );

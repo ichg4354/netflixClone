@@ -4,7 +4,7 @@ import propTypes from "prop-types";
 import { TextInput } from "react-native";
 
 const Search = ({ onChange, onSubmit }) => {
-  return <TextInput></TextInput>;
+  return <TextInput placeholder={"INPUT"}></TextInput>;
 };
 
 export default Search;
