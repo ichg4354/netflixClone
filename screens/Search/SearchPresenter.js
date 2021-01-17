@@ -5,14 +5,11 @@ import styled from "styled-components/native";
 import Search from "../../Components/Search";
 import Vertical from "../../Components/Vertical";
 import VerticalContainer from "../../Components/VerticalContainer";
+import propTypes from "prop-types";
 
 const Container = styled.View`
   background-color: black;
   flex: 1;
-`;
-
-const Text = styled.Text`
-  color: white;
 `;
 
 export default ({ onSubmit, onChange, value, tvResult, movieResult }) => (

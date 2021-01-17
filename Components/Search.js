@@ -13,7 +13,11 @@ const Search = ({ onChange, onSubmit, placeholder, value }) => {
         backgroundColor: "white",
         height: 40,
         borderColor: "white",
-        borderWidth: 1,
+        borderRadius: 15,
+        width: 400,
+        alignSelf: "center",
+        paddingHorizontal: 10,
+        marginTop: 10,
       }}
       onChangeText={onChange}
       onSubmitEditing={onSubmit}
@@ -25,4 +29,3 @@ const Search = ({ onChange, onSubmit, placeholder, value }) => {
 export default Search;
 
 // https://api.themoviedb.org/3/movie/upcoming?api_key=a76626c370c4d199ae9ac6169f7383dd
- 
