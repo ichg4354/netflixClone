@@ -21,19 +21,6 @@ export default ({ onSubmit, onChange, value, tvResult, movieResult }) => (
         onChange={onChange}
         placeholder={"Write a keyword"}
       ></Search>
-      {tvResult ? (
-        <VerticalContainer title="Tv">
-          {tvResult.map((show) => (
-            <Vertical
-              id={show.id}
-              key={show.id}
-              title={show.name}
-              poster={show.poster_path}
-              overView={show.overview}
-            ></Vertical>
-          ))}
-        </VerticalContainer>
-      ) : null}
       {movieResult ? (
         <VerticalContainer title="Movie">
           {movieResult.map((movie) => (
@@ -43,6 +30,19 @@ export default ({ onSubmit, onChange, value, tvResult, movieResult }) => (
               id={movie.id}
               title={movie.title}
               overView={movie.overview}
+            ></Vertical>
+          ))}
+        </VerticalContainer>
+      ) : null}
+      {tvResult ? (
+        <VerticalContainer title="Tv">
+          {tvResult.map((show) => (
+            <Vertical
+              id={show.id}
+              key={show.id}
+              title={show.name}
+              poster={show.poster_path}
+              overView={show.overview}
             ></Vertical>
           ))}
         </VerticalContainer>
