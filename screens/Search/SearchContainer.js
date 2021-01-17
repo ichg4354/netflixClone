@@ -4,19 +4,31 @@ import SearchPresenter from "./SearchPresenter";
 import { movieApi, tvApi } from "../../api";
 
 const searchContainer = () => {
-  const [keyword, setKeyword] = useState("");
-  const [results, setResults] = useState({});
+  const [keyword, setKeyword] = useState();
+  const [results, setResults] = useState({
+    tvSearch: [],
+    movieSearch: [],
+    tvSearchError: null,
+    movieSearchError: null,
+  });
   const getData = async () => {
-    const [tvSearch, tvSearchError] = await tvApi.search("food");
-    const [movieSearch, movieSearchError] = await movieApi.search("pirate");
-    setResults({ tvSearch, tvSearchError, movieSearch, movieSearchError });
+    const [tvResult, tvResultError] = await tvApi.search(keyword);
+    const [movieResult, movieResultError] = await movieApi.search(keyword);
+    setResults({
+      tvResult,
+      tvResultError,
+      movieResult,
+      movieResultError,
+    });
   };
-  console.log(results);
-  useEffect(() => {
-    getData();
-  }, []);
+  const onChange = (text) => setKeyword(text);
   return (
-    <SearchPresenter {...results} setKeyword={(word) => setKeyword(word)} />
+    <SearchPresenter
+      onChange={onChange}
+      onSubmit={getData}
+      value={keyword}
+      {...results}
+    />
   );
 };
 

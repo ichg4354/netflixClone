@@ -1,19 +1,23 @@
 import React from "react";
 import styled from "styled-components/native";
 import propTypes from "prop-types";
-import { TextInput } from "react-native";
+import { NativeEventEmitter, TextInput } from "react-native";
 
-const Search = ({ onChange, onSubmit }) => {
+const Search = ({ onChange, onSubmit, placeholder, value }) => {
   return (
     <TextInput
+      value={value}
+      placeholder={placeholder}
       style={{
-        color: "white",
+        color: "black",
+        backgroundColor: "white",
         height: 40,
         borderColor: "white",
         borderWidth: 1,
       }}
-      onChangeText={(text) => console.log(text)}
-      onSubmitEditing={(value) => onSubmit(value.nativeEvent.text)}
+      onChangeText={onChange}
+      onSubmitEditing={onSubmit}
+      returnKeyType={"search"}
     />
   );
 };
@@ -21,3 +25,4 @@ const Search = ({ onChange, onSubmit }) => {
 export default Search;
 
 // https://api.themoviedb.org/3/movie/upcoming?api_key=a76626c370c4d199ae9ac6169f7383dd
+ 
