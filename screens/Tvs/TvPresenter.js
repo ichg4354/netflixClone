@@ -12,8 +12,8 @@ import Swiper from "react-native-web-swiper";
 import { tvApi } from "../../api";
 import { Slide } from "../../Components/Slide";
 
-export default ({ loading, popular, topRated, today, thisWeek }) => (
-  <ScrollContainer loading={loading}>
+export default ({ loading, popular, topRated, today, thisWeek, reloadFn }) => (
+  <ScrollContainer loading={loading} reloadFn={reloadFn}>
     <HorizontalContainer title={"Popular Shows"}>
       {popular?.map((show) => (
         <Horizontal

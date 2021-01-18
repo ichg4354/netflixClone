@@ -8,8 +8,8 @@ import HorizontalContainer from "../../Components/HorizontalContainer";
 import VerticalContainer from "../../Components/VerticalContainer";
 import SliderContainer from "../../Components/SliderContainer";
 
-export default ({ loading, nowPlaying, popular, upcomming }) => (
-  <ScrollContainer loading={loading}>
+export default ({ loading, nowPlaying, popular, upcomming, reloadFn }) => (
+  <ScrollContainer loading={loading} reloadFn={reloadFn}>
     <SliderContainer>
       {nowPlaying?.map((movie) => (
         <Slide

@@ -15,7 +15,7 @@ const Container = styled.View`
 
 export default ({ onSubmit, onChange, value, tvResult, movieResult }) => (
   <Container>
-    <ScrollContainer loading={false}>
+    <ScrollContainer loading={false} reloadFn={onSubmit}>
       <Search
         value={value}
         onSubmit={onSubmit}

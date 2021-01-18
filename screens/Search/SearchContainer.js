@@ -12,6 +12,9 @@ const searchContainer = () => {
     movieSearchError: null,
   });
   const getData = async () => {
+    if (keyword === "") {
+      return null;
+    }
     const [tvResult, tvResultError] = await tvApi.search(keyword);
     const [movieResult, movieResultError] = await movieApi.search(keyword);
     setResults({
