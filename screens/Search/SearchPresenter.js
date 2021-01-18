@@ -3,9 +3,10 @@ import { TextBase } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import styled from "styled-components/native";
 import Search from "../../Components/Search";
-import Vertical from "../../Components/Vertical";
-import VerticalContainer from "../../Components/VerticalContainer";
+import Horizontal from "../../Components/Horizontal";
+import HorizontalContainer from "../../Components/HorizontalContainer";
 import propTypes from "prop-types";
+import ScrollContainer from "../../Components/ScrollContainer";
 
 const Container = styled.View`
   background-color: black;
@@ -14,7 +15,7 @@ const Container = styled.View`
 
 export default ({ onSubmit, onChange, value, tvResult, movieResult }) => (
   <Container>
-    <ScrollView>
+    <ScrollContainer loading={false}>
       <Search
         value={value}
         onSubmit={onSubmit}
@@ -22,31 +23,31 @@ export default ({ onSubmit, onChange, value, tvResult, movieResult }) => (
         placeholder={"Write a keyword"}
       ></Search>
       {movieResult ? (
-        <VerticalContainer title="Movie">
+        <HorizontalContainer title="Movie">
           {movieResult.map((movie) => (
-            <Vertical
+            <Horizontal
               key={movie.id}
               poster={movie.poster_path}
               id={movie.id}
               title={movie.title}
               overView={movie.overview}
-            ></Vertical>
+            ></Horizontal>
           ))}
-        </VerticalContainer>
+        </HorizontalContainer>
       ) : null}
       {tvResult ? (
-        <VerticalContainer title="Tv">
+        <HorizontalContainer title="Tv">
           {tvResult.map((show) => (
-            <Vertical
+            <Horizontal
               id={show.id}
               key={show.id}
               title={show.name}
               poster={show.poster_path}
               overView={show.overview}
-            ></Vertical>
+            ></Horizontal>
           ))}
-        </VerticalContainer>
+        </HorizontalContainer>
       ) : null}
-    </ScrollView>
+    </ScrollContainer>
   </Container>
 );

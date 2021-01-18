@@ -24,7 +24,7 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const loadAssets = () => {
     const images = casheImages([
-      "https://images.unsplash.com/photo-1609252703786-3d1a11c5cee7?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "https://vectorified.com/images/picture-not-available-icon-1.png",
     ]);
     const fonts = casheFonts([Ionicons.font]);
     return Promise.all([...images, ...fonts]);

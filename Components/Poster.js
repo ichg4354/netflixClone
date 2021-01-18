@@ -8,6 +8,7 @@ const PosterImage = styled.Image`
   width: 105px;
   height: 160px;
   border-radius: 4px;
+  margin-right: 10px;
 `;
 
 export const Poster = ({ url }) => (

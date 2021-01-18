@@ -49,7 +49,7 @@ Vertical.propTypes = {
   id: propTypes.number.isRequired,
   title: propTypes.string.isRequired,
   overView: propTypes.string.isRequired,
-  poster: propTypes.string.isRequired,
+  poster: propTypes.string,
   ReleseDate: propTypes.string,
 };
 
