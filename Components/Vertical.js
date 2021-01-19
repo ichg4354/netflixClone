@@ -5,6 +5,7 @@ import { TouchableOpacity } from "react-native";
 import { getImage } from "../api";
 import { Poster } from "./Poster";
 import { sliceText } from "../utils";
+import { useNavigation } from "@react-navigation/native";
 
 const Container = styled.View`
   flex-direction: row;
@@ -32,18 +33,24 @@ const ReleseDate = styled.Text`
   margin-bottom: 10px;
 `;
 
-const Vertical = ({ title, poster, overView, releaseDate, id }) => (
-  <TouchableOpacity>
-    <Container>
-      <Poster url={poster} />
-      <Data>
-        <Title>{title}</Title>
-        {releaseDate ? <ReleseDate>{releaseDate}</ReleseDate> : null}
-        <OverView>{sliceText(overView, 150)}</OverView>
-      </Data>
-    </Container>
-  </TouchableOpacity>
-);
+const Vertical = ({ title, poster, overView, releaseDate, id }) => {
+  const navigation = useNavigation();
+  const toDetail = () => {
+    navigation.navigate("Detail", { title, poster, overView, releaseDate, id });
+  };
+  return (
+    <TouchableOpacity onPress={toDetail}>
+      <Container>
+        <Poster url={poster} />
+        <Data>
+          <Title>{title}</Title>
+          {releaseDate ? <ReleseDate>{releaseDate}</ReleseDate> : null}
+          <OverView>{sliceText(overView, 150)}</OverView>
+        </Data>
+      </Container>
+    </TouchableOpacity>
+  );
+};
 
 Vertical.propTypes = {
   id: propTypes.number.isRequired,
