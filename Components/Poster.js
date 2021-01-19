@@ -12,18 +12,18 @@ const PosterImage = styled.Image`
 `;
 
 export const Poster = ({ url }) => (
-  <PosterImage
-    source={
-      url
-        ? { url: getImage(url) }
-        : {
-            url:
-              "https://vectorified.com/images/picture-not-available-icon-1.png",
-          }
-    }
-  ></PosterImage>
+  <PosterImage source={{ uri: getImage(url) }}></PosterImage>
 );
 
 Poster.propTypes = {
   url: propTypes.string,
 };
+
+// source={
+//   url
+//     ? { url: getImage(url) }
+//     : {
+//         url:
+//           "https://vectorified.com/images/picture-not-available-icon-1.png",
+//       }
+// }

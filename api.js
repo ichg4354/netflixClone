@@ -37,4 +37,12 @@ export const tvApi = {
   show: (id) => getAnything(`/tv/${id}`),
 };
 
-export const getImage = (path) => `https://image.tmdb.org/t/p/w500${path}`;
+export const getImage = (path) => {
+  if (path) {
+    return `https://image.tmdb.org/t/p/w500${path}`;
+  } else {
+    return "https://vectorified.com/images/picture-not-available-icon-1.png";
+  }
+};
+
+// https://image.tmdb.org/t/p/w500${path}
