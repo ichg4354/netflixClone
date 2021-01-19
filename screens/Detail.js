@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text } from "react-native";
+import { sliceText } from "../utils";
 
 export default ({
   route: {
@@ -8,6 +9,8 @@ export default ({
   },
 }) => {
   const navigaiton = useNavigation();
+  // navigaiton.setOptions({ title: sliceText(title, 20) });
+  useEffect(() => navigaiton.setOptions({ title: sliceText(title, 20) }), []);
   return (
     <View>
       <Text>{id}</Text>

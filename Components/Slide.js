@@ -6,6 +6,8 @@ import { Poster } from "./Poster";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Votes from "./Votes";
 import { sliceText } from "../utils";
+import { View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const BG = styled.Image`
   width: 100%;
@@ -69,24 +71,37 @@ export const Slide = ({
   votes,
   overview,
   poster,
-}) => (
-  <>
-    <BG source={{ uri: getImage(backgroundImage) }}></BG>
-    <Content>
-      <Poster url={poster} />
-      <Data>
-        <Title>{sliceText(title, 25)}</Title>
-        <VotesContainer>
-          <Votes votes={votes} />
-        </VotesContainer>
-        <Overview>{sliceText(overview, 80)}</Overview>
-        <Button>
-          <ButtonText>View details</ButtonText>
-        </Button>
-      </Data>
-    </Content>
-  </>
-);
+}) => {
+  const navigation = useNavigation();
+  const toDetail = () => {
+    navigation.navigate("Detail", {
+      id,
+      title,
+      backgroundImage,
+      votes,
+      overview,
+      poster,
+    });
+  };
+  return (
+    <View>
+      <BG source={{ uri: getImage(backgroundImage) }}></BG>
+      <Content>
+        <Poster url={poster} />
+        <Data>
+          <Title>{sliceText(title, 25)}</Title>
+          <VotesContainer>
+            <Votes votes={votes} />
+          </VotesContainer>
+          <Overview>{sliceText(overview, 80)}</Overview>
+          <Button onPress={toDetail}>
+            <ButtonText>View details</ButtonText>
+          </Button>
+        </Data>
+      </Content>
+    </View>
+  );
+};
 
 Slide.propTypes = {
   id: propTypes.number.isRequired,
