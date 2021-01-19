@@ -18,12 +18,3 @@ export const Poster = ({ url }) => (
 Poster.propTypes = {
   url: propTypes.string,
 };
-
-// source={
-//   url
-//     ? { url: getImage(url) }
-//     : {
-//         url:
-//           "https://vectorified.com/images/picture-not-available-icon-1.png",
-//       }
-// }

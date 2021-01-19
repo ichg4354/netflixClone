@@ -14,7 +14,7 @@ const Search = ({ onChange, onSubmit, placeholder, value }) => {
         height: 40,
         borderColor: "white",
         borderRadius: 15,
-        width: 400,
+        width: "90%",
         alignSelf: "center",
         paddingHorizontal: 10,
         marginTop: 10,

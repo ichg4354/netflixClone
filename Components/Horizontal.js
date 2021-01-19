@@ -7,6 +7,7 @@ import { getImage } from "../api";
 import Votes from "./Votes";
 import { TouchableOpacity } from "react-native";
 import { sliceText } from "../utils";
+import { useNavigation } from "@react-navigation/native";
 
 const Container = styled.View`
   justify-content: center;
@@ -19,14 +20,20 @@ const Title = styled.Text`
   margin-top: 4px;
 `;
 
-const Horizontal = ({ title, votes, poster, id }) => (
-  <TouchableOpacity>
-    <Container>
-      <Poster url={poster} />
-      <Title style={{ color: "white" }}>{sliceText(title, 10)}</Title>
-      <Votes votes={votes} />
-    </Container>
-  </TouchableOpacity>
-);
+const Horizontal = ({ title, votes, poster, id }) => {
+  const navigation = useNavigation();
+  const toDetail = () => {
+    navigation.navigate("Detail", { id, title, votes, poster });
+  };
+  return (
+    <TouchableOpacity onPress={toDetail}>
+      <Container>
+        <Poster url={poster} />
+        <Title style={{ color: "white" }}>{sliceText(title, 10)}</Title>
+        <Votes votes={votes} />
+      </Container>
+    </TouchableOpacity>
+  );
+};
 
 export default Horizontal;
