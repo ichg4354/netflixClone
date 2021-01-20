@@ -32,6 +32,7 @@ export default ({ onSubmit, onChange, value, tvResult, movieResult }) => (
               title={movie.title}
               overView={movie.overview}
               votes={movie.vote_average}
+              backgroundImage={movie.backdrop_path}
             ></Horizontal>
           ))}
         </HorizontalContainer>
@@ -46,6 +47,7 @@ export default ({ onSubmit, onChange, value, tvResult, movieResult }) => (
               poster={show.poster_path}
               overView={show.overview}
               votes={show.vote_average}
+              backgroundImage={show.backdrop_path}
             ></Horizontal>
           ))}
         </HorizontalContainer>

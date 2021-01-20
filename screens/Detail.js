@@ -14,7 +14,6 @@ const Header = styled.View`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
 `;
 
 const BG = styled.Image`
@@ -46,6 +45,12 @@ const InfoData = styled.View`
   margin-left: 20px;
 `;
 
+const Data = styled.View`
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 50px;
+`;
+
 export default ({
   route: {
     params: { id, title, votes, poster, overview, backgroundImage },
@@ -61,10 +66,13 @@ export default ({
           <Poster url={poster} />
           <InfoData>
             <Title>{sliceText(title, 20)}</Title>
-            <Votes votes={votes}></Votes>
+            {votes && <Votes votes={votes}></Votes>}
           </InfoData>
         </Info>
       </Header>
+      <Data>
+        <OverView>{overview}</OverView>
+      </Data>
     </ScrollContainer>
   );
 };
