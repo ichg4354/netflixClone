@@ -20,10 +20,16 @@ const Title = styled.Text`
   margin-top: 4px;
 `;
 
-const Horizontal = ({ title, votes, poster, id }) => {
+const Horizontal = ({ title, votes, poster, id, backgroundImage }) => {
   const navigation = useNavigation();
   const toDetail = () => {
-    navigation.navigate("Detail", { id, title, votes, poster });
+    navigation.navigate("Detail", {
+      id,
+      title,
+      votes,
+      poster,
+      backgroundImage,
+    });
   };
   return (
     <TouchableOpacity onPress={toDetail}>

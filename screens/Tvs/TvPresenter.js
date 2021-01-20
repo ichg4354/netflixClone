@@ -22,6 +22,7 @@ export default ({ loading, popular, topRated, today, thisWeek, reloadFn }) => (
           title={show.name}
           votes={show.vote_average}
           poster={show.poster_path}
+          backgroundImage={show.backdrop_path}
         ></Horizontal>
       ))}
     </HorizontalContainer>
@@ -46,6 +47,7 @@ export default ({ loading, popular, topRated, today, thisWeek, reloadFn }) => (
           title={show.name}
           votes={show.vote_average}
           poster={show.poster_path}
+          backgroundImage={show.backdrop_path}
         ></Horizontal>
       ))}
     </HorizontalContainer>
@@ -57,6 +59,7 @@ export default ({ loading, popular, topRated, today, thisWeek, reloadFn }) => (
           title={show.name}
           poster={show.poster_path}
           overView={show.overview}
+          backgroundImage={show.backdrop_path}
         ></Vertical>
       ))}
     </VerticalContainer>

@@ -33,10 +33,24 @@ const ReleseDate = styled.Text`
   margin-bottom: 10px;
 `;
 
-const Vertical = ({ title, poster, overView, releaseDate, id }) => {
+const Vertical = ({
+  title,
+  poster,
+  overView,
+  releaseDate,
+  id,
+  backgroundImage,
+}) => {
   const navigation = useNavigation();
   const toDetail = () => {
-    navigation.navigate("Detail", { title, poster, overView, releaseDate, id });
+    navigation.navigate("Detail", {
+      title,
+      poster,
+      overView,
+      releaseDate,
+      id,
+      backgroundImage,
+    });
   };
   return (
     <TouchableOpacity onPress={toDetail}>

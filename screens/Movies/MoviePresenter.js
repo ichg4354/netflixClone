@@ -31,6 +31,7 @@ export default ({ loading, nowPlaying, popular, upcomming, reloadFn }) => (
           title={movie.title}
           votes={movie.vote_average}
           poster={movie.poster_path}
+          backgroundImage={movie.backdrop_path}
         />
       ))}
     </HorizontalContainer>
@@ -43,6 +44,7 @@ export default ({ loading, nowPlaying, popular, upcomming, reloadFn }) => (
           title={movie.title}
           overView={movie.overview}
           releaseDate={movie.release_date}
+          backgroundImage={movie.backdrop_path}
         ></Vertical>
       ))}
     </VerticalContainer>

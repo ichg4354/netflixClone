@@ -38,6 +38,7 @@ const Title = styled.Text`
   color: white;
   font-weight: 700;
   font-size: 22px;
+  margin-bottom: 5px;
 `;
 
 const InfoData = styled.View`
