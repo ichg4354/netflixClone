@@ -24,10 +24,13 @@ const BG = styled.Image`
 
 const Info = styled.View`
   flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
   position: absolute;
-  top: 180px;
+  top: 170px;
+  width: 85%;
 `;
+
 const OverView = styled.Text`
   color: white;
   font-weight: 500;
@@ -42,13 +45,24 @@ const Title = styled.Text`
 
 const InfoData = styled.View`
   width: 55%;
-  margin-left: 20px;
+  margin-left: 15px;
 `;
 
 const Data = styled.View`
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
   margin-top: 50px;
+`;
+
+const DataTitle = styled.Text`
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 10px;
+`;
+const DataValue = styled.Text`
+  color: white;
+  font-weight: 400;
 `;
 
 export default ({
@@ -71,7 +85,12 @@ export default ({
         </Info>
       </Header>
       <Data>
-        <OverView>{overview}</OverView>
+        {overview && (
+          <>
+            <DataTitle>Overview</DataTitle>
+            <DataValue>{overview}</DataValue>
+          </>
+        )}
       </Data>
     </ScrollContainer>
   );

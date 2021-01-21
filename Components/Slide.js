@@ -84,7 +84,7 @@ export const Slide = ({
     });
   };
   return (
-    <View>
+    <>
       <BG source={{ uri: getImage(backgroundImage) }}></BG>
       <Content>
         <Poster url={poster} />
@@ -99,7 +99,7 @@ export const Slide = ({
           </Button>
         </Data>
       </Content>
-    </View>
+    </>
   );
 };
 
