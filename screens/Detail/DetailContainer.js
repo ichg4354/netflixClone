@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { movieApi } from "../../api";
 import DetailPresenter from "./DetailPresenter";
 
 const DetailContainer = ({
@@ -6,7 +7,15 @@ const DetailContainer = ({
     params: { id, title, poster, overview, backgroundImage, votes },
   },
 }) => {
-  console.log(overview);
+  const [movie, setMovie] = useState();
+  const getData = async () => {
+    const [movie, movieError] = await movieApi.movie(id);
+    setMovie(movie);
+    console.log(movie);
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <DetailPresenter
       id={id}
@@ -15,6 +24,7 @@ const DetailContainer = ({
       overview={overview}
       backgroundImage={backgroundImage}
       votes={votes}
+      {...movie}
     ></DetailPresenter>
   );
 };

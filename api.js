@@ -44,4 +44,3 @@ export const getImage = (path) => {
     return "https://vectorified.com/images/picture-not-available-icon-1.png";
   }
 };
-
