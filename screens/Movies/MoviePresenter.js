@@ -42,7 +42,7 @@ export default ({ loading, nowPlaying, popular, upcomming, reloadFn }) => (
           poster={movie.poster_path}
           id={movie.id}
           title={movie.title}
-          overView={movie.overview}
+          overview={movie.overview}
           releaseDate={movie.release_date}
           backgroundImage={movie.backdrop_path}
         ></Vertical>

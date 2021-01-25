@@ -36,7 +36,7 @@ const ReleseDate = styled.Text`
 const Vertical = ({
   title,
   poster,
-  overView,
+  overview,
   releaseDate,
   id,
   backgroundImage,
@@ -46,7 +46,7 @@ const Vertical = ({
     navigation.navigate("Detail", {
       title,
       poster,
-      overView,
+      overview,
       releaseDate,
       id,
       backgroundImage,
@@ -59,7 +59,7 @@ const Vertical = ({
         <Data>
           <Title>{title}</Title>
           {releaseDate ? <ReleseDate>{releaseDate}</ReleseDate> : null}
-          <OverView>{sliceText(overView, 150)}</OverView>
+          <OverView>{sliceText(overview, 150)}</OverView>
         </Data>
       </Container>
     </TouchableOpacity>
@@ -69,7 +69,7 @@ const Vertical = ({
 Vertical.propTypes = {
   id: propTypes.number.isRequired,
   title: propTypes.string.isRequired,
-  overView: propTypes.string.isRequired,
+  overview: propTypes.string.isRequired,
   poster: propTypes.string,
   ReleseDate: propTypes.string,
 };

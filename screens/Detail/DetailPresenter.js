@@ -1,12 +1,12 @@
 import { useNavigation } from "@react-navigation/native";
+import styled from "styled-components/native";
 import React, { useEffect } from "react";
 import { View, Text, Dimensions } from "react-native";
-import { Poster } from "../Components/Poster";
-import ScrollContainer from "../Components/ScrollContainer";
-import { sliceText } from "../utils";
-import styled from "styled-components/native";
-import { getImage } from "../api";
-import Votes from "../Components/Votes";
+import { Poster } from "../../Components/Poster";
+import ScrollContainer from "../../Components/ScrollContainer";
+import { sliceText } from "../../utils";
+import { getImage } from "../../api";
+import Votes from "../../Components/Votes";
 
 const HEIGHT = Dimensions.get("window").height;
 
@@ -65,11 +65,7 @@ const DataValue = styled.Text`
   font-weight: 400;
 `;
 
-export default ({
-  route: {
-    params: { id, title, votes, poster, overview, backgroundImage },
-  },
-}) => {
+export default ({ id, title, poster, overview, backgroundImage, votes }) => {
   const navigaiton = useNavigation();
   useEffect(() => navigaiton.setOptions({ title: sliceText(title, 20) }), []);
   return (

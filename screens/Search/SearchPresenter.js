@@ -30,7 +30,7 @@ export default ({ onSubmit, onChange, value, tvResult, movieResult }) => (
               poster={movie.poster_path}
               id={movie.id}
               title={movie.title}
-              overView={movie.overview}
+              overview={movie.overview}
               votes={movie.vote_average}
               backgroundImage={movie.backdrop_path}
             ></Horizontal>
@@ -45,7 +45,7 @@ export default ({ onSubmit, onChange, value, tvResult, movieResult }) => (
               key={show.id}
               title={show.name}
               poster={show.poster_path}
-              overView={show.overview}
+              overview={show.overview}
               votes={show.vote_average}
               backgroundImage={show.backdrop_path}
             ></Horizontal>
