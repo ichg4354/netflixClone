@@ -9,9 +9,9 @@ const DetailContainer = ({
 }) => {
   const [movie, setMovie] = useState();
   const getData = async () => {
-    const [movie, movieError] = await movieApi.movie(id);
-    setMovie(movie);
-    console.log(movie);
+    
+    const [data, dataError] = await movieApi.movie(id);
+    setMovie(data);
   };
   useEffect(() => {
     getData();
@@ -24,6 +24,7 @@ const DetailContainer = ({
       overview={overview}
       backgroundImage={backgroundImage}
       votes={votes}
+      reloadFn={getData}
       {...movie}
     ></DetailPresenter>
   );

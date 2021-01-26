@@ -65,11 +65,19 @@ const DataValue = styled.Text`
   font-weight: 400;
 `;
 
-export default ({ id, title, poster, overview, backgroundImage, votes }) => {
+export default ({
+  id,
+  title,
+  poster,
+  overview,
+  backgroundImage,
+  votes,
+  reloadFn,
+}) => {
   const navigaiton = useNavigation();
   useEffect(() => navigaiton.setOptions({ title: sliceText(title, 20) }), []);
   return (
-    <ScrollContainer loading={false}>
+    <ScrollContainer loading={false} reloadFn={reloadFn}>
       <Header>
         <BG source={{ uri: getImage(backgroundImage) }}></BG>
         <Info>

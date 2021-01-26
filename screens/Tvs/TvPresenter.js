@@ -23,6 +23,7 @@ export default ({ loading, popular, topRated, today, thisWeek, reloadFn }) => (
           votes={show.vote_average}
           poster={show.poster_path}
           backgroundImage={show.backdrop_path}
+          isTv={true}
         ></Horizontal>
       ))}
     </HorizontalContainer>
@@ -36,6 +37,7 @@ export default ({ loading, popular, topRated, today, thisWeek, reloadFn }) => (
           votes={show.vote_average}
           backgroundImage={show.backdrop_path}
           poster={show.poster_path}
+          isTv={true}
         ></Slide>
       ))}
     </SliderContainer>
@@ -48,6 +50,7 @@ export default ({ loading, popular, topRated, today, thisWeek, reloadFn }) => (
           votes={show.vote_average}
           poster={show.poster_path}
           backgroundImage={show.backdrop_path}
+          isTv={true}
         ></Horizontal>
       ))}
     </HorizontalContainer>
@@ -60,6 +63,7 @@ export default ({ loading, popular, topRated, today, thisWeek, reloadFn }) => (
           poster={show.poster_path}
           overview={show.overview}
           backgroundImage={show.backdrop_path}
+          isTv={true}
         ></Vertical>
       ))}
     </VerticalContainer>

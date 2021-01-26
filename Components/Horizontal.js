@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components/native";
-import propTypes from "prop-types";
 import { Poster } from "./Poster";
 import { Text } from "react-native";
 import { getImage } from "../api";
@@ -8,6 +7,7 @@ import Votes from "./Votes";
 import { TouchableOpacity } from "react-native";
 import { sliceText } from "../utils";
 import { useNavigation } from "@react-navigation/native";
+import propTypes from "prop-types";
 
 const Container = styled.View`
   justify-content: center;
@@ -40,6 +40,15 @@ const Horizontal = ({ title, votes, poster, id, backgroundImage }) => {
       </Container>
     </TouchableOpacity>
   );
+};
+
+Horizontal.propTypes = {
+  id: propTypes.number.isRequired,
+  title: propTypes.string.isRequired,
+  votes: propTypes.number.isRequired,
+  poster: propTypes.string.isRequired,
+  backgroundImage: propTypes.string.isRequired,
+  isTv: propTypes.bool.isRequired,
 };
 
 export default Horizontal;

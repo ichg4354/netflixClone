@@ -72,6 +72,7 @@ Vertical.propTypes = {
   overview: propTypes.string.isRequired,
   poster: propTypes.string,
   ReleseDate: propTypes.string,
+  isTv: propTypes.bool.isRequired,
 };
 
 export default Vertical;
