@@ -71,6 +71,7 @@ export const Slide = ({
   votes,
   overview,
   poster,
+  isTv,
 }) => {
   const navigation = useNavigation();
   const toDetail = () => {
@@ -81,6 +82,7 @@ export const Slide = ({
       votes,
       overview,
       poster,
+      isTv,
     });
   };
   return (
@@ -106,8 +108,9 @@ export const Slide = ({
 Slide.propTypes = {
   id: propTypes.number.isRequired,
   title: propTypes.string.isRequired,
-  backgroundImage: propTypes.string.isRequired,
-  votes: propTypes.number.isRequired,
-  overview: propTypes.string.isRequired,
-  poster: propTypes.string.isRequired,
+  backgroundImage: propTypes.string,
+  votes: propTypes.number,
+  overview: propTypes.string,
+  poster: propTypes.string,
+  isTv: propTypes.bool.isRequired,
 };

@@ -20,6 +20,7 @@ export default ({ loading, nowPlaying, popular, upcomming, reloadFn }) => (
           votes={movie.vote_average}
           backgroundImage={movie.backdrop_path}
           poster={movie.poster_path}
+          isTv={false}
         />
       ))}
     </SliderContainer>
@@ -32,6 +33,7 @@ export default ({ loading, nowPlaying, popular, upcomming, reloadFn }) => (
           votes={movie.vote_average}
           poster={movie.poster_path}
           backgroundImage={movie.backdrop_path}
+          isTv={false}
         />
       ))}
     </HorizontalContainer>
@@ -45,6 +47,7 @@ export default ({ loading, nowPlaying, popular, upcomming, reloadFn }) => (
           overview={movie.overview}
           releaseDate={movie.release_date}
           backgroundImage={movie.backdrop_path}
+          isTv={false}
         ></Vertical>
       ))}
     </VerticalContainer>

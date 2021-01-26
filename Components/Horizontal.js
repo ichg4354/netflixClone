@@ -20,7 +20,7 @@ const Title = styled.Text`
   margin-top: 4px;
 `;
 
-const Horizontal = ({ title, votes, poster, id, backgroundImage }) => {
+const Horizontal = ({ title, votes, poster, id, backgroundImage, isTv }) => {
   const navigation = useNavigation();
   const toDetail = () => {
     navigation.navigate("Detail", {
@@ -29,6 +29,7 @@ const Horizontal = ({ title, votes, poster, id, backgroundImage }) => {
       votes,
       poster,
       backgroundImage,
+      isTv,
     });
   };
   return (

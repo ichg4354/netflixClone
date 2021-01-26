@@ -40,6 +40,7 @@ const Vertical = ({
   releaseDate,
   id,
   backgroundImage,
+  isTv,
 }) => {
   const navigation = useNavigation();
   const toDetail = () => {
@@ -50,6 +51,7 @@ const Vertical = ({
       releaseDate,
       id,
       backgroundImage,
+      isTv,
     });
   };
   return (

@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { movieApi } from "../../api";
+import { movieApi, tvApi } from "../../api";
 import DetailPresenter from "./DetailPresenter";
 
 const DetailContainer = ({
   route: {
-    params: { id, title, poster, overview, backgroundImage, votes },
+    params: { id, title, poster, overview, backgroundImage, votes, isTv },
   },
 }) => {
   const [movie, setMovie] = useState();
   const getData = async () => {
-    
-    const [data, dataError] = await movieApi.movie(id);
-    setMovie(data);
+    if (isTv) {
+      const [data, dataError] = await tvApi.show(id);
+      setMovie(data);
+    } else {
+      const [data, dataError] = await movieApi.movie(id);
+      setMovie(data);
+    }
   };
+  console.log(isTv);
   useEffect(() => {
     getData();
   }, []);
