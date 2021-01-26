@@ -46,9 +46,9 @@ const Horizontal = ({ title, votes, poster, id, backgroundImage, isTv }) => {
 Horizontal.propTypes = {
   id: propTypes.number.isRequired,
   title: propTypes.string.isRequired,
-  votes: propTypes.number.isRequired,
-  poster: propTypes.string.isRequired,
-  backgroundImage: propTypes.string.isRequired,
+  votes: propTypes.number,
+  poster: propTypes.string,
+  backgroundImage: propTypes.string,
   isTv: propTypes.bool.isRequired,
 };
 

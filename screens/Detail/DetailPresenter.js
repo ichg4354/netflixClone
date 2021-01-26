@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import styled from "styled-components/native";
 import React, { useEffect } from "react";
-import { View, Text, Dimensions } from "react-native";
+import { View, Text, Dimensions, ActivityIndicator } from "react-native";
 import { Poster } from "../../Components/Poster";
 import ScrollContainer from "../../Components/ScrollContainer";
 import { sliceText } from "../../utils";
@@ -73,6 +73,7 @@ export default ({
   backgroundImage,
   votes,
   reloadFn,
+  loading,
 }) => {
   const navigaiton = useNavigation();
   useEffect(() => navigaiton.setOptions({ title: sliceText(title, 20) }), []);
@@ -89,13 +90,25 @@ export default ({
         </Info>
       </Header>
       <Data>
-        {overview && (
+        {overview ? (
           <>
             <DataTitle>Overview</DataTitle>
             <DataValue>{overview}</DataValue>
           </>
-        )}
+        ) : null}
       </Data>
+      {loading ? (
+        <ActivityIndicator color="white" style={{ marginTop: 50 }} />
+      ) : (
+        <Data>
+          {overview ? (
+            <>
+              <DataTitle>Overview</DataTitle>
+              <DataValue>{overview}</DataValue>
+            </>
+          ) : null}
+        </Data>
+      )}
     </ScrollContainer>
   );
 };
