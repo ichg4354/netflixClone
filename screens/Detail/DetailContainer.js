@@ -1,5 +1,6 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { movieApi, tvApi } from "../../api";
+import * as WebBrowser from "expo-web-browser";
 import DetailPresenter from "./DetailPresenter";
 
 const DetailContainer = ({
@@ -20,6 +21,9 @@ const DetailContainer = ({
       setLoading(false);
     }
   };
+  const openBrowser = async (linkID) =>
+    WebBrowser.openBrowserAsync(`https://www.imdb.com/title/${linkID}`);
+
   useEffect(() => {
     getData();
   }, []);
@@ -34,6 +38,7 @@ const DetailContainer = ({
       reloadFn={getData}
       {...movie}
       loading={loading}
+      openBrowser={openBrowser}
     ></DetailPresenter>
   );
 };

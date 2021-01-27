@@ -35,7 +35,7 @@ export const tvApi = {
   topRated: () => getAnything("/tv/top_rated"),
   popular: () => getAnything("/tv/popular"),
   search: (query) => getAnything("/search/tv", { query: query }),
-  show: (id) => getAnything(`/tv/${id}`),
+  show: (id) => getAnything(`/tv/${id}`, { append_to_response: "videos" }),
 };
 
 export const getImage = (path) => {

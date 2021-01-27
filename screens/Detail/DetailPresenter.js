@@ -7,6 +7,7 @@ import ScrollContainer from "../../Components/ScrollContainer";
 import { sliceText } from "../../utils";
 import { getImage } from "../../api";
 import Votes from "../../Components/Votes";
+import InAppLink from "../../Components/Detail/Link";
 
 const HEIGHT = Dimensions.get("window").height;
 
@@ -83,6 +84,8 @@ export default ({
   first_air_date,
   genres,
   number_of_episodes,
+  imdb_id,
+  openBrowser,
 }) => {
   const navigaiton = useNavigation();
   useEffect(() => navigaiton.setOptions({ title: sliceText(title, 20) }), []);
@@ -145,6 +148,11 @@ export default ({
                 <DataValue>{number_of_episodes}</DataValue>
               </>
             ) : null}
+            <InAppLink
+              icon={"imdb"}
+              text={"IMDB"}
+              onPress={() => openBrowser(imdb_id)}
+            ></InAppLink>
           </>
         )}
       </Data>
