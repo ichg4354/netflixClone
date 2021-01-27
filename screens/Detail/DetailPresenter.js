@@ -14,6 +14,7 @@ const Header = styled.View`
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin-bottom: 40px;
 `;
 
 const BG = styled.Image`
@@ -51,7 +52,7 @@ const InfoData = styled.View`
 const Data = styled.View`
   padding-left: 30px;
   padding-right: 30px;
-  margin-top: 50px;
+  margin-top: 20px;
 `;
 
 const DataTitle = styled.Text`
@@ -63,6 +64,7 @@ const DataTitle = styled.Text`
 const DataValue = styled.Text`
   color: white;
   font-weight: 400;
+  margin-bottom: 20px;
 `;
 
 export default ({
@@ -74,6 +76,11 @@ export default ({
   votes,
   reloadFn,
   loading,
+  runtime,
+  status,
+  first_air_date,
+  genres,
+  number_of_episodes,
 }) => {
   const navigaiton = useNavigation();
   useEffect(() => navigaiton.setOptions({ title: sliceText(title, 20) }), []);
@@ -96,19 +103,49 @@ export default ({
             <DataValue>{overview}</DataValue>
           </>
         ) : null}
+        {loading ? (
+          <ActivityIndicator color="white" style={{ marginTop: 50 }} />
+        ) : (
+          <>
+            {status ? (
+              <>
+                <DataTitle>Status</DataTitle>
+                <DataValue>{status}</DataValue>
+              </>
+            ) : null}
+            {runtime ? (
+              <>
+                <DataTitle>Runtime</DataTitle>
+                <DataValue>{runtime} minutes</DataValue>
+              </>
+            ) : null}
+            {first_air_date ? (
+              <>
+                <DataTitle>First Air Date</DataTitle>
+                <DataValue>{first_air_date}</DataValue>
+              </>
+            ) : null}
+            {genres ? (
+              <>
+                <DataTitle>Geners</DataTitle>
+                <DataValue>
+                  {genres.map((each, index) =>
+                    index + 1 === genres.length
+                      ? ` ${each.name}`
+                      : ` ${each.name},`
+                  )}
+                </DataValue>
+              </>
+            ) : null}
+            {number_of_episodes ? (
+              <>
+                <DataTitle>Number of episodes</DataTitle>
+                <DataValue>{number_of_episodes}</DataValue>
+              </>
+            ) : null}
+          </>
+        )}
       </Data>
-      {loading ? (
-        <ActivityIndicator color="white" style={{ marginTop: 50 }} />
-      ) : (
-        <Data>
-          {overview ? (
-            <>
-              <DataTitle>Overview</DataTitle>
-              <DataValue>{overview}</DataValue>
-            </>
-          ) : null}
-        </Data>
-      )}
     </ScrollContainer>
   );
 };
