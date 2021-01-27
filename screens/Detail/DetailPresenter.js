@@ -41,7 +41,8 @@ const Title = styled.Text`
   color: white;
   font-weight: 700;
   font-size: 22px;
-  margin-bottom: 5px;
+  margin-top: 15px;
+  margin-bottom: 7px;
 `;
 
 const InfoData = styled.View`
@@ -93,7 +94,7 @@ export default ({
           <Poster url={poster} />
           <InfoData>
             <Title>{sliceText(title, 20)}</Title>
-            {votes && <Votes votes={votes}></Votes>}
+            <Votes votes={votes}></Votes>
           </InfoData>
         </Info>
       </Header>
