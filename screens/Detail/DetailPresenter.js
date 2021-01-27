@@ -53,6 +53,7 @@ const Data = styled.View`
   padding-left: 30px;
   padding-right: 30px;
   margin-top: 20px;
+  width: 100%;
 `;
 
 const DataTitle = styled.Text`
