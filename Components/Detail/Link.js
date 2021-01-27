@@ -1,18 +1,26 @@
 import React from "react";
 import styled from "styled-components";
 import { FontAwesome } from "@expo/vector-icons";
-import { TouchableOpacity, Text } from "react-native";
+
+const Button = styled.TouchableOpacity`
+  flex-direction: row;
+  align-items: center;
+`;
+const Text = styled.Text`
+  color: white;
+  margin-right: 5px;
+`;
 
 const InAppLink = ({ icon, text, onPress }) => (
-  <TouchableOpacity onPress={onPress}>
-    <Text style={{ color: "white" }}>{text}</Text>
+  <Button onPress={onPress}>
+    <Text>{text}</Text>
     <FontAwesome
       name={icon}
       onPress={onPress}
-      size={18}
+      size={20}
       color="white"
     ></FontAwesome>
-  </TouchableOpacity>
+  </Button>
 );
 
 export default InAppLink;
