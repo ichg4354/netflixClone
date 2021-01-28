@@ -86,18 +86,20 @@ export default ({
   number_of_episodes,
   imdb_id,
   openBrowser,
+  videos,
 }) => {
   const navigaiton = useNavigation();
   useEffect(() => navigaiton.setOptions({ title: sliceText(title, 20) }), []);
   return (
     <ScrollContainer loading={false} reloadFn={reloadFn}>
       <Header>
+        {console.log(videos)}
         <BG source={{ uri: getImage(backgroundImage) }}></BG>
         <Info>
           <Poster url={poster} />
           <InfoData>
             <Title>{sliceText(title, 20)}</Title>
-            <Votes votes={votes}></Votes>
+            {votes ? <Votes votes={votes}></Votes> : null}
           </InfoData>
         </Info>
       </Header>
@@ -148,11 +150,32 @@ export default ({
                 <DataValue>{number_of_episodes}</DataValue>
               </>
             ) : null}
-            <InAppLink
-              icon={"imdb"}
-              text={"IMDB"}
-              onPress={() => openBrowser(imdb_id)}
-            ></InAppLink>
+            {imdb_id ? (
+              <>
+                <DataTitle>Link</DataTitle>
+                <InAppLink
+                  icon={"imdb"}
+                  text={"IMDB Page"}
+                  onPress={() =>
+                    openBrowser("https://www.imdb.com/title/", imdb_id)
+                  }
+                ></InAppLink>
+              </>
+            ) : null}
+            {videos.results.length > 0 ? (
+              <>
+                <DataTitle>Youtube Link</DataTitle>
+                {videos.results.map((each) => (
+                  <InAppLink
+                    icon={"youtube-play"}
+                    text={each.name}
+                    onPress={() =>
+                      openBrowser("https://www.youtube.com/watch?v=", each.key)
+                    }
+                  ></InAppLink>
+                ))}
+              </>
+            ) : null}
           </>
         )}
       </Data>

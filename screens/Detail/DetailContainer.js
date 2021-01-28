@@ -21,8 +21,8 @@ const DetailContainer = ({
       setLoading(false);
     }
   };
-  const openBrowser = async (linkID) =>
-    WebBrowser.openBrowserAsync(`https://www.imdb.com/title/${linkID}`);
+  const openBrowser = async (where, linkID) =>
+    WebBrowser.openBrowserAsync(`${where}${linkID}`);
 
   useEffect(() => {
     getData();
