@@ -5,6 +5,7 @@ import { FontAwesome } from "@expo/vector-icons";
 const Button = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
+  margin-bottom: 10px;
 `;
 const Text = styled.Text`
   color: white;

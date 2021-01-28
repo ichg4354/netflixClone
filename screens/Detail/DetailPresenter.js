@@ -56,12 +56,13 @@ const Data = styled.View`
   padding-right: 30px;
   margin-top: 20px;
   width: 100%;
+  padding-bottom: 100px;
 `;
 
 const DataTitle = styled.Text`
   color: white;
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 700;
+  font-size: 18px;
   margin-bottom: 10px;
 `;
 const DataValue = styled.Text`
@@ -168,7 +169,7 @@ export default ({
                 {videos.results.map((each) => (
                   <InAppLink
                     icon={"youtube-play"}
-                    text={each.name}
+                    text={sliceText(each.name, 30)}
                     onPress={() =>
                       openBrowser("https://www.youtube.com/watch?v=", each.key)
                     }
