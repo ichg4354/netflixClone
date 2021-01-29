@@ -7,7 +7,7 @@ const DiscoveryContainer = () => {
   const [movie, setMovie] = useState({});
   const getData = async () => {
     const [discover, discoverError] = await movieApi.discover();
-    setMovie({ discover, discoverError });
+    setMovie({ discover });
   };
   useEffect(() => {
     getData();
