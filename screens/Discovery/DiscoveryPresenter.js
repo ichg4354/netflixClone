@@ -1,6 +1,5 @@
 import React from "react";
-import { Dimensions, Text } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
+import { Dimensions, PanResponder, Animated, StyleSheet } from "react-native";
 import styled from "styled-components/native";
 import { getImage } from "../../api";
 
@@ -22,21 +21,41 @@ const Card = styled.View`
 const DiscoveryPoster = styled.Image`
   width: 90%;
   height: ${HEIGHT / 1.5}px;
-  position: absolute;
   border-radius: 30px;
 `;
 
-const DiscoveryPresenter = ({ discover }) => (
-  <Container>
-    <Card>
+const DiscoveryPresenter = ({ discover }) => {
+  const position = new Animated.ValueXY();
+  const panResponder = PanResponder.create({
+    onStartShouldSetPanResponder: () => true,
+    onPanResponderMove: (ext, { dx, dy }) => {
+      position.setValue({ x: dx, y: dy });
+    },
+  });
+  const animatedStyle = position.getTranslateTransform();
+  return (
+    <Container>
       {discover?.map((each, key) => (
-        <DiscoveryPoster
+        <Animated.View
           key={key}
-          source={{ uri: getImage(each.poster_path) }}
-        ></DiscoveryPoster>
+          {...panResponder.panHandlers}
+          style={{ ...styles, transform: [...animatedStyle] }}
+        >
+          <DiscoveryPoster
+            source={{ uri: getImage(each.poster_path) }}
+          ></DiscoveryPoster>
+        </Animated.View>
       ))}
-    </Card>
-  </Container>
-);
+    </Container>
+  );
+};
 
 export default DiscoveryPresenter;
+
+const styles = {
+  width: "100%",
+  height: "100%",
+  justifyContent: "center",
+  alignItems: "center",
+  position: "absolute",
+};
