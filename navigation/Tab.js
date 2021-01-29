@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useLayoutEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Detail from "../screens/Detail";
-import Favs from "../screens/Favs";
+import Favs from "../screens/Discovery";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import { Platform } from "react-native";
@@ -52,10 +52,10 @@ export default (object) => {
         },
       }}
     >
+      <Tab.Screen name="Favs" component={Favs} />
       <Tab.Screen name="Movies" component={Movies} />
       <Tab.Screen name="TV" component={Tvs} />
       <Tab.Screen name="Search" component={Search} />
-      <Tab.Screen name="Favs" component={Favs} />
     </Tab.Navigator>
   );
 };

@@ -94,7 +94,6 @@ export default ({
   return (
     <ScrollContainer loading={false} reloadFn={reloadFn}>
       <Header>
-        {console.log(videos)}
         <BG source={{ uri: getImage(backgroundImage) }}></BG>
         <Info>
           <Poster url={poster} />
@@ -166,13 +165,14 @@ export default ({
             {videos.results.length > 0 ? (
               <>
                 <DataTitle>Youtube Link</DataTitle>
-                {videos.results.map((each) => (
+                {videos.results.map((each, key) => (
                   <InAppLink
                     icon={"youtube-play"}
                     text={sliceText(each.name, 30)}
                     onPress={() =>
                       openBrowser("https://www.youtube.com/watch?v=", each.key)
                     }
+                    key={key}
                   ></InAppLink>
                 ))}
               </>

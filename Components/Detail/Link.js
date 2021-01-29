@@ -1,27 +1,37 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/native";
 import { FontAwesome } from "@expo/vector-icons";
+import { TouchableOpacity } from "react-native";
 
-const Button = styled.TouchableOpacity`
+const Box = styled.View`
   flex-direction: row;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 `;
+
 const Text = styled.Text`
   color: white;
   margin-right: 5px;
 `;
 
 const InAppLink = ({ icon, text, onPress }) => (
-  <Button onPress={onPress}>
-    <Text>{text}</Text>
-    <FontAwesome
-      name={icon}
+  <Box>
+    <TouchableOpacity
       onPress={onPress}
-      size={20}
-      color="white"
-    ></FontAwesome>
-  </Button>
+      style={{
+        flexDirection: "row",
+        alignItems: "center",
+      }}
+    >
+      <Text>{text}</Text>
+      <FontAwesome
+        name={icon}
+        onPress={onPress}
+        size={20}
+        color="white"
+      ></FontAwesome>
+    </TouchableOpacity>
+  </Box>
 );
 
 export default InAppLink;
