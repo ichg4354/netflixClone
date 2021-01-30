@@ -31,6 +31,12 @@ const DiscoveryPresenter = ({ discover }) => {
     onPanResponderMove: (ext, { dx, dy }) => {
       position.setValue({ x: dx, y: dy });
     },
+    onPanResponderRelease: () => {
+      Animated.spring(position, {
+        toValue: { x: 0, y: 0 },
+        useNativeDriver: true,
+      }).start();
+    },
   });
   const animatedStyle = position.getTranslateTransform();
   return (
