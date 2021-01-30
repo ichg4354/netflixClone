@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Dimensions, PanResponder, Animated, StyleSheet } from "react-native";
 import styled from "styled-components/native";
 import { getImage } from "../../api";
@@ -25,6 +25,7 @@ const DiscoveryPoster = styled.Image`
 `;
 
 const DiscoveryPresenter = ({ discover }) => {
+  const [TopIndex, setTopIndex] = useState(0);
   const position = new Animated.ValueXY();
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
@@ -40,26 +41,74 @@ const DiscoveryPresenter = ({ discover }) => {
   });
   const animatedStyle = position.getTranslateTransform();
   const rotationValue = position.x.interpolate({
-    inputRange: [-100, 0, 100],
+    inputRange: [-255, 0, 255],
     outputRange: ["-10deg", "0deg", "10deg"],
+    extrapolate: "clamp",
+  });
+  const secondOpacityValue = position.x.interpolate({
+    inputRange: [-255, 0, 255],
+    outputRange: [1, 0.2, 1],
+    extrapolate: "clamp",
+  });
+  const secondScaleValue = position.x.interpolate({
+    inputRange: [-255, 0, 255],
+    outputRange: [1, 0.8, 1],
     extrapolate: "clamp",
   });
   return (
     <Container>
-      {discover?.map((each, key) => (
-        <Animated.View
-          key={key}
-          {...panResponder.panHandlers}
-          style={{
-            ...styles,
-            transform: [...animatedStyle, { rotate: rotationValue }],
-          }}
-        >
-          <DiscoveryPoster
-            source={{ uri: getImage(each.poster_path) }}
-          ></DiscoveryPoster>
-        </Animated.View>
-      ))}
+      {discover?.map((each, key) => {
+        if (key === TopIndex) {
+          return (
+            <Animated.View
+              key={key}
+              {...panResponder.panHandlers}
+              style={{
+                ...styles,
+                zIndex: 2,
+                transform: [...animatedStyle, { rotate: rotationValue }],
+              }}
+            >
+              <DiscoveryPoster
+                source={{ uri: getImage(each.poster_path) }}
+              ></DiscoveryPoster>
+            </Animated.View>
+          );
+        } else if (key === TopIndex + 1) {
+          return (
+            <Animated.View
+              key={key}
+              {...panResponder.panHandlers}
+              style={{
+                ...styles,
+                zIndex: TopIndex - 1,
+                opacity: secondOpacityValue,
+                transform: [{ scale: secondScaleValue }],
+              }}
+            >
+              <DiscoveryPoster
+                source={{ uri: getImage(each.poster_path) }}
+              ></DiscoveryPoster>
+            </Animated.View>
+          );
+        } else {
+          return (
+            <Animated.View
+              key={key}
+              {...panResponder.panHandlers}
+              style={{
+                zIndex: TopIndex - 2,
+                ...styles,
+                opacity: 0,
+              }}
+            >
+              <DiscoveryPoster
+                source={{ uri: getImage(each.poster_path) }}
+              ></DiscoveryPoster>
+            </Animated.View>
+          );
+        }
+      })}
     </Container>
   );
 };
