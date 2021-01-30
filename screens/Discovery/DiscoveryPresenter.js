@@ -32,11 +32,30 @@ const DiscoveryPresenter = ({ discover }) => {
     onPanResponderMove: (ext, { dx, dy }) => {
       position.setValue({ x: dx, y: dy });
     },
-    onPanResponderRelease: () => {
-      Animated.spring(position, {
-        toValue: { x: 0, y: 0 },
-        useNativeDriver: true,
-      }).start();
+    onPanResponderRelease: async (ext, { dx, dy }) => {
+      if (dx >= 150) {
+        Animated.spring(position, {
+          toValue: {
+            x: WIDTH + 300,
+            y: dy,
+          },
+          useNativeDriver: true,
+        }).start(() => setTopIndex(TopIndex + 1));
+      } else if (dx <= -150) {
+        Animated.spring(position, {
+          toValue: {
+            x: -WIDTH - 300,
+            y: dy,
+          },
+          useNativeDriver: true,
+        }).start(() => setTopIndex(TopIndex + 1));
+      } else {
+        console.log("NONE");
+        Animated.spring(position, {
+          toValue: { x: 0, y: 0 },
+          useNativeDriver: true,
+        }).start();
+      }
     },
   });
   const animatedStyle = position.getTranslateTransform();
@@ -65,7 +84,7 @@ const DiscoveryPresenter = ({ discover }) => {
               {...panResponder.panHandlers}
               style={{
                 ...styles,
-                zIndex: 2,
+                zIndex: 1,
                 transform: [...animatedStyle, { rotate: rotationValue }],
               }}
             >
@@ -81,7 +100,7 @@ const DiscoveryPresenter = ({ discover }) => {
               {...panResponder.panHandlers}
               style={{
                 ...styles,
-                zIndex: TopIndex - 1,
+                zIndex: 0,
                 opacity: secondOpacityValue,
                 transform: [{ scale: secondScaleValue }],
               }}
@@ -97,7 +116,7 @@ const DiscoveryPresenter = ({ discover }) => {
               key={key}
               {...panResponder.panHandlers}
               style={{
-                zIndex: TopIndex - 2,
+                zIndex: -1,
                 ...styles,
                 opacity: 0,
               }}
