@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Dimensions, PanResponder, Animated, StyleSheet } from "react-native";
 import styled from "styled-components/native";
 import { getImage } from "../../api";
@@ -39,13 +39,21 @@ const DiscoveryPresenter = ({ discover }) => {
     },
   });
   const animatedStyle = position.getTranslateTransform();
+  const rotationValue = position.x.interpolate({
+    inputRange: [-100, 0, 100],
+    outputRange: ["-10deg", "0deg", "10deg"],
+    extrapolate: "clamp",
+  });
   return (
     <Container>
       {discover?.map((each, key) => (
         <Animated.View
           key={key}
           {...panResponder.panHandlers}
-          style={{ ...styles, transform: [...animatedStyle] }}
+          style={{
+            ...styles,
+            transform: [...animatedStyle, { rotate: rotationValue }],
+          }}
         >
           <DiscoveryPoster
             source={{ uri: getImage(each.poster_path) }}
